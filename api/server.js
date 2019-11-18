@@ -2,11 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
+// Routers here
+
 const server = express();
 
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
+
+// Routes here
 
 server.get("/", (req, res) => {
   res.send("It's alive!");

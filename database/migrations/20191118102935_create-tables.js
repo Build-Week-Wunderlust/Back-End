@@ -43,15 +43,16 @@ exports.up = function(knex) {
     trips.string('price', 128).notNullable();
     trips.string('duration', 128).notNullable();
     trips.string('location', 128).notNullable();
-    trips.string('language', 128)
+    trips.string('language', 128);
+    trips.integer('guide_id').unsigned().notNullable().references('id').inTable('guides');
     })
 
-    .createTable('users_trips', tbl => {
-        tbl.increments();
-        tbl.integer('user_id').unsigned().notNullable().references('id').inTable('users');
-        tbl.integer('tourist_id').unsigned().notNullable().references('id').inTable('tourists');
-        tbl.integer('guide_id').unsigned().notNullable().references('id').inTable('guides');
-        tbl.integer('trip_id').unsigned().notNullable().references('id').inTable('trips');
+  .createTable('users_trips', tbl => {
+    tbl.increments();
+    tbl.integer('user_id').unsigned().notNullable().references('id').inTable('users');
+    tbl.integer('tourist_id').unsigned().notNullable().references('id').inTable('tourists');
+    tbl.integer('guide_id').unsigned().notNullable().references('id').inTable('guides');
+    tbl.integer('trip_id').unsigned().notNullable().references('id').inTable('trips');
     })
 };
 

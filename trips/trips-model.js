@@ -10,21 +10,21 @@ module.exports = {
 };
 
 function find() {
-  return db('users').select('id', 'username');
+  return db('trips').select('id', 'tourname');
 }
 
 function findBy(filter) {
-  return db('users').where(filter);
+  return db('trips').where(filter);
 }
 
-async function add(user) {
-  const [id] = await db('users').insert(user);
+async function add(trip) {
+  const [id] = await db('trips').insert(trip);
 
   return findById(id);
 }
 
 function findById(id) {
-  return db('users')
+  return db('trips')
     .where({ id })
     .first();
 }

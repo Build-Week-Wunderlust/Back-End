@@ -15,6 +15,7 @@ router.post("/guides/register", (req, res) => {
   if (validateResult.isSuccessful === true) {
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
+    console.log(user);
 
     Guides.add(user)
       .then(saved => {

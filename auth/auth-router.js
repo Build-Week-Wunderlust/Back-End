@@ -17,13 +17,14 @@ router.post("/guides/register", (req, res) => {
     user.password = hash;
     console.log(user);
 
-    Guides.add(user).then(saved => {
-      console.log("add result", saved);
-      res.status(201).json(saved);
-    });
-    // .catch(error => {
-    //   res.status(500).json({ message: error.message });
-    // });
+    Guides.add(user)
+      .then(saved => {
+        console.log("add result", saved);
+        res.status(201).json(saved);
+      })
+      .catch(error => {
+        res.status(500).json({ message: error.message });
+      });
   } else {
     res.status(400).json({
       message: "Invalid user input, see errors for details",

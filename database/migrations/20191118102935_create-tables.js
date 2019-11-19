@@ -4,9 +4,15 @@ exports.up = async function(knex) {
     .createTable("users", users => {
       users.increments();
 
-      users.string("email", 128).notNullable();
+      users
+        .string("email", 128)
+        .notNullable()
+        .unique();
 
-      users.string("username", 128).notNullable();
+      users
+        .string("username", 128)
+        .notNullable()
+        .unique();
       users.string("password", 128).notNullable();
     })
 

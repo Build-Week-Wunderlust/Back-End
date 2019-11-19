@@ -10,18 +10,20 @@ const { validateUser } = require("../users/users-helpers");
 router.post("/guides/register", (req, res) => {
   let user = req.body;
   const validateResult = validateUser(user);
+  console.log(validateResult);
 
   if (validateResult.isSuccessful === true) {
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
+    console.log(user);
 
-    Guides.add(user)
-      .then(saved => {
-        res.status(201).json(saved);
-      })
-      .catch(error => {
-        res.status(500).json({ message: error.message });
-      });
+    Guides.add(user).then(saved => {
+      console.log("add result", saved);
+      res.status(201).json(saved);
+    });
+    // .catch(error => {
+    //   res.status(500).json({ message: error.message });
+    // });
   } else {
     res.status(400).json({
       message: "Invalid user input, see errors for details",

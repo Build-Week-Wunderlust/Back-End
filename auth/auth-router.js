@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const Guides = require("../users/guides/guides-model");
 const Tourists = require("../users/tourists/tourists-model");
+const generateTouristToken = require("./touristToken.js");
 
 const { validateUser } = require("../users/users-helpers");
 
@@ -85,7 +86,7 @@ router.post("/tourists/login", (req, res) => {
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        const token = generateToken(user.username);
+        const token = generateTouristToken(user.username);
 
         res.status(200).json({
           subject: `Hello ${user.username}, here's a token.`,
@@ -104,7 +105,7 @@ function generateToken(user) {
   const payload = {
     subject: user.id,
     username: user.username,
-    role: user.guide && user.tourist
+    type: "guide"
   };
 
   const secret = process.env.JWT_SECRET || "is it secret, is it safe?";

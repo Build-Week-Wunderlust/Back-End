@@ -6,13 +6,13 @@ const authenticate = require("../auth/restricted-middleware");
 
 const router = express.Router();
 
-router.get("/trips", authenticate, (req, res) => {
+router.get("/", authenticate, (req, res) => {
   Trips.find()
     .then(trips => res.status(200).json(trips))
     .catch(err => res.status(500).json({ error: err }));
 });
 
-router.get("/trips/:id", authenticate, (req, res) => {
+router.get("/:id", authenticate, (req, res) => {
   Trips.findById(req.params.id)
     .then(trip => {
       if (trip) {
@@ -24,13 +24,13 @@ router.get("/trips/:id", authenticate, (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 });
 
-router.post("/trips", authenticate, (req, res) => {
+router.post("/", authenticate, (req, res) => {
   Trips.add(req.body)
     .then(trips => res.status(200).json(trips))
     .catch(err => res.status(500).json({ error: err }));
 });
 
-router.put("/trips/:id", authenticate, (req, res) => {
+router.put("/:id", authenticate, (req, res) => {
   Trips.findById(req.params.id)
     .then(trip => {
       if (trip) {
@@ -44,7 +44,7 @@ router.put("/trips/:id", authenticate, (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 });
 
-router.delete("/trips/:id", authenticate, (req, res) => {
+router.delete("/:id", authenticate, (req, res) => {
   Trips.remove(req.params.id)
     .then(trip => res.json({ message: `${trip} has been deleted` }))
     .catch(err => res.status(500).json({ error: err }));

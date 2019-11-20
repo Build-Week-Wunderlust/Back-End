@@ -103,7 +103,8 @@ router.post("/tourists/login", (req, res) => {
 function generateToken(user) {
   const payload = {
     subject: user.id,
-    username: user.username
+    username: user.username,
+    role: user.guide && user.tourist
   };
 
   const secret = process.env.JWT_SECRET || "is it secret, is it safe?";

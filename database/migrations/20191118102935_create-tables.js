@@ -52,12 +52,6 @@ exports.up = async function(knex) {
       trips.string("duration", 128).notNullable();
       trips.string("location", 128).notNullable();
       trips.string("language", 128);
-      trips
-        .integer("guide_id")
-        .unsigned()
-        .notNullable()
-        .references("id")
-        .inTable("guides");
     })
 
     .createTable("users_trips", tbl => {
@@ -68,12 +62,6 @@ exports.up = async function(knex) {
         .notNullable()
         .references("id")
         .inTable("users");
-      // tbl
-      //   .integer("tourist_id")
-      //   .unsigned()
-      //   .notNullable()
-      //   .references("id")
-      //   .inTable("tourists");
       tbl
         .integer("guide_id")
         .unsigned()

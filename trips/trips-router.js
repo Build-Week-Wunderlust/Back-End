@@ -24,7 +24,7 @@ router.get("/:id", authenticate, (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 });
 
-router.post("/", authenticate, (req, res) => {
+router.post("/", (req, res) => {
   Trips.add(req.body)
     .then(trips => res.status(200).json(trips))
     .catch(err => res.status(500).json({ error: err }));

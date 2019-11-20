@@ -12,8 +12,7 @@ exports.seed = function(knex) {
           price: "$100 per day",
           duration: "8 hours",
           location: "Rocky Mountains",
-          language: "English",
-          guide_id: 1
+          language: "English"
         },
         {
           id: 2,
@@ -22,8 +21,7 @@ exports.seed = function(knex) {
           price: "$50 per day, lunch included",
           duration: "6 hours",
           location: "Amazon",
-          language: "English and Spanish",
-          guide_id: 2
+          language: "English and Spanish"
         },
         {
           id: 3,
@@ -32,8 +30,7 @@ exports.seed = function(knex) {
           price: "$50 per day, lunch included",
           duration: "6 hours",
           location: "Amazon",
-          language: "English and Spanish",
-          guide_id: 3
+          language: "English and Spanish"
         }
       ]);
     });

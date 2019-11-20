@@ -10,13 +10,16 @@ const { validateUser } = require("../users/users-helpers");
 router.post("/guides/register", (req, res) => {
   let user = req.body;
   const validateResult = validateUser(user);
+  console.log(validateResult);
 
   if (validateResult.isSuccessful === true) {
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
+    console.log(user);
 
     Guides.add(user)
       .then(saved => {
+        console.log("add result", saved);
         res.status(201).json(saved);
       })
       .catch(error => {

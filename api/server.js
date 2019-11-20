@@ -3,7 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const authRouter = require("../auth/auth-router");
-const authenticate = require("../auth/restricted-middleware.js");
+// const authenticate = require("../auth/restricted-middleware.js");
 
 const tripsRouter = require("../trips/trips-router.js");
 const guidesRouter = require("../users/guides/guides-router");
@@ -15,7 +15,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use("/api/auth", authRouter);
-server.use("/api/trip", authenticate, tripsRouter);
+server.use("/api/trip", tripsRouter);
 server.use("/api/auth", guidesRouter);
 
 server.get("/", (req, res) => {

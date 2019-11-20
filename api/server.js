@@ -15,8 +15,8 @@ server.use(cors());
 server.use(express.json());
 
 server.use("/api/auth", authRouter);
-server.use("/api/", authenticate, tripsRouter);
-server.use("/api", guidesRouter);
+server.use("/api/trip", authenticate, tripsRouter);
+server.use("/api/auth", guidesRouter);
 
 server.get("/", (req, res) => {
   res.send({ message: "It's alive!" });

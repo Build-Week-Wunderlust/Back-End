@@ -17,10 +17,11 @@ function findBy(filter) {
   return db("trips").where(filter);
 }
 
-async function add(trip) {
-  const [id] = await db("trips").insert(trip, "id");
-
-  return findById(id);
+function add(item) {
+  console.log(item);
+  return db("trips")
+    .insert(item, "id")
+    .then(ids => ({ id: ids[0] }));
 }
 
 function findById(id) {

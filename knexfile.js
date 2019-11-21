@@ -50,20 +50,6 @@ module.exports = {
   },
 
   testing: {
-<<<<<<< HEAD
-    client: 'sqlite3',
-    connection: {
-      filename: './database/test.db3',
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: './database/migrations',
-    },
-    seeds: {
-      directory: './database/seeds',
-    },
-  },
-=======
     client: "sqlite3",
     connection: {
       filename: "./database/test.db3"
@@ -76,5 +62,4 @@ module.exports = {
       directory: "./database/seeds"
     }
   }
->>>>>>> f2f9e57458c91cda3ff310751c0321a08a34c257
 };

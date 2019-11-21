@@ -16,7 +16,7 @@ describe('Guides model', () => {
         })
 
         it('Should add a new guide', async () => {
-            await Guides.add({ email: 'bill@gmail', username: 'BillyBoy', password: 'hello' });
+            await Guides.add({ firstname: 'bill', lastname: 'bob', user_id: '1' });
             const guides = await db('guides');
             expect(guides).toHaveLength(1);
         })

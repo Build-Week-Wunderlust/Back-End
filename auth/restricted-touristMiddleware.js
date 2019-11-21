@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
 
     jwt.verify(token, secret, (err, decodedToken) => {
       if (err) {
-        res.status(401).json({ message: "Bad one!" });
+        res.status(401).json({ message: "Please provide correct credentials" });
       } else {
         if (decodedToken.type === "tourist") {
           req.decodedJwt = decodedToken;

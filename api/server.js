@@ -3,7 +3,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const authRouter = require("../auth/auth-router");
-// const authenticate = require("../auth/restricted-middleware.js");
 
 const tripsRouter = require("../trips/trips-router.js");
 const guidesRouter = require("../users/guides/guides-router");

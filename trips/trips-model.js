@@ -43,10 +43,10 @@ function remove(id) {
     .delete();
 }
 
-function getTripsByUserId(guide_id) {
+function getTripsByUserId(user_id) {
   return db("trips as t")
-    .join("guides", "guides.id", "t.guide_id")
-    .where({ guide_id });
+    .join("users", "users.id", "t.user_id")
+    .where("t.user_id", user_id);
 }
 
 // function getTripsByUserId(user_id) {

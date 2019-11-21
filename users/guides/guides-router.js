@@ -44,4 +44,12 @@ router.get("/guides/:id/trips", authenticate, (req, res) => {
     });
 });
 
+router.post("/guides/:id/trips", authenticate, (req, res) => {
+  const { id } = req.params;
+
+  Trips.addTripsByUserId(req.body, id)
+    .then(trips => res.status(200).json(trips))
+    .catch(err => res.status(500).json({ error: err }));
+});
+
 module.exports = router;

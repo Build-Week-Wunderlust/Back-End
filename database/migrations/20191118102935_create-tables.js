@@ -53,11 +53,11 @@ exports.up = async function(knex) {
       trips.string("location", 128).notNullable();
       trips.string("language", 128);
       trips
-        .integer("guide_id")
+        .integer("user_id")
         .unsigned()
         .notNullable()
         .references("id")
-        .inTable("guides");
+        .inTable("users");
     })
 
     .createTable("users_trips", tbl => {

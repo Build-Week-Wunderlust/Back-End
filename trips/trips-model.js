@@ -6,7 +6,8 @@ module.exports = {
   findBy,
   findById,
   update,
-  remove
+  remove,
+  getTripsByUserId
 };
 
 function find() {
@@ -41,3 +42,24 @@ function remove(id) {
     .where({ id })
     .delete();
 }
+
+function getTripsByUserId(guide_id) {
+  return db("trips as t")
+    .join("guides", "guides.id", "t.guide_id")
+    .where({ guide_id });
+}
+
+// function getTripsByUserId(user_id) {
+//   return db("users_trips as t")
+//     .select(
+//       "trips.tourname",
+//       "trips.description",
+//       "trips.price",
+//       "trips.duration",
+//       "trips.location",
+//       "trips.language"
+//     )
+//     .join("users", "users.id", "t.user_id")
+//     .join("trips", "trips.id", "t.trip_id")
+//     .where({ user_id });
+// }

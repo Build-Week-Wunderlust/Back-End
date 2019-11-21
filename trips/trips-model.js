@@ -7,7 +7,8 @@ module.exports = {
   findById,
   update,
   remove,
-  getTripsByUserId
+  getTripsByUserId,
+  addTripsByUserId
 };
 
 function find() {
@@ -45,21 +46,23 @@ function remove(id) {
 
 function getTripsByUserId(user_id) {
   return db("trips as t")
+    .select(
+      "t.id",
+      "t.tourname",
+      "t.description",
+      "t.price",
+      "t.duration",
+      "t.location",
+      "t.language"
+    )
     .join("users", "users.id", "t.user_id")
     .where("t.user_id", user_id);
 }
 
-// function getTripsByUserId(user_id) {
-//   return db("users_trips as t")
-//     .select(
-//       "trips.tourname",
-//       "trips.description",
-//       "trips.price",
-//       "trips.duration",
-//       "trips.location",
-//       "trips.language"
-//     )
-//     .join("users", "users.id", "t.user_id")
-//     .join("trips", "trips.id", "t.trip_id")
-//     .where({ user_id });
-// }
+function addTripsByUserId(user_id) {
+  return db("trips as t")
+    .insert(user_id, "id")
+    .join("users", "users.id", "t.user_id")
+    .where("t.user_id", user_id)
+    .then(ids => ({ id: ids[0] }));
+}

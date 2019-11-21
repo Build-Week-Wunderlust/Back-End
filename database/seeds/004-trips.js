@@ -13,7 +13,7 @@ exports.seed = function(knex) {
           duration: "8 hours",
           location: "Rocky Mountains",
           language: "English",
-          guide_id: 1
+          user_id: 1
         },
         {
           id: 2,
@@ -23,17 +23,17 @@ exports.seed = function(knex) {
           duration: "6 hours",
           location: "Amazon",
           language: "English and Spanish",
-          guide_id: 2
+          user_id: 2
         },
         {
           id: 3,
-          tourname: "rainforest excursion",
+          tourname: "Beach excursion",
           description: "an adventure exploring the rainforest",
           price: "$50 per day, lunch included",
           duration: "6 hours",
           location: "Amazon",
           language: "English and Spanish",
-          guide_id: 3
+          user_id: 3
         }
       ]);
     });
